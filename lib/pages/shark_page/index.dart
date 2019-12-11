@@ -1,7 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import './search.dart';
+import '../../components/search_bar.dart';
 
 class SharkPage extends StatelessWidget {
   final buttonList = <Map>[

@@ -14,7 +14,7 @@ class _LayoutState extends State<Layout> {
 
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
-      icon:Icon(CupertinoIcons.home),
+      icon:Icon(Icons.dvr),
       title:Text('状态监控')
     ),
     BottomNavigationBarItem(

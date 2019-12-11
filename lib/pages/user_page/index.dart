@@ -8,40 +8,6 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  void changeInstitutions(context) async {
-    var s = await showDialog(
-      context: context,
-      builder: (context) {
-        return MyDialog(groupValue: 1);
-      }
-    );
-  }
-
-  void logout(BuildContext context) async {
-    var s = await showDialog(
-      context: context,
-      builder: (context) {
-        return new AlertDialog(
-          title: new Text("退出登录?"),
-          actions: <Widget>[
-            new FlatButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: new Text("取消"),
-            ),
-            new FlatButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: new Text("确认"),
-            ),
-          ],
-        );
-      }
-    );
-  }
-  
   List itemList;
 
   @override
@@ -49,11 +15,13 @@ class _UserPageState extends State<UserPage> {
     itemList = [
       {
         'name':'设备交接',
-        'imgUrl':'https://cdn.gosafenet.com/static/weixin/static/equipment_handover.png'
+        'imgUrl':'https://cdn.gosafenet.com/static/weixin/static/equipment_handover.png',
+        'fn':equipmentHandover
       },
       {
         'name':'芯片注册',
-        'imgUrl':'https://cdn.gosafenet.com/static/weixin/static/chip_register.png'
+        'imgUrl':'https://cdn.gosafenet.com/static/weixin/static/chip_register.png',
+        'fn':chipBind
       },
       {
         'name':'切换机构',
@@ -164,4 +132,46 @@ class _UserPageState extends State<UserPage> {
       ],
     );
   }
+}
+
+void changeInstitutions(context) async {
+  var s = await showDialog(
+    context: context,
+    builder: (context) {
+      return MyDialog(groupValue: 1);
+    }
+  );
+}
+
+void logout(BuildContext context) async {
+  var s = await showDialog(
+    context: context,
+    builder: (context) {
+      return new AlertDialog(
+        title: new Text("退出登录?"),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: new Text("取消"),
+          ),
+          new FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: new Text("确认"),
+          ),
+        ],
+      );
+    }
+  );
+}
+
+void equipmentHandover(context) {
+  Navigator.of(context).pushNamed("/equipment_handover");
+}
+
+void chipBind(context) {
+  Navigator.of(context).pushNamed("/chip_bind");
 }

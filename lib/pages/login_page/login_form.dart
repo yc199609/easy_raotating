@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import './dialog.dart';
+import '../../components/institutions_dialog.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key key,this.mode,this.login}) : super(key: key);
@@ -19,7 +19,7 @@ class _LoginFormState extends State<LoginForm> {
     return showDialog(
       context: context,
       builder: (context) {
-        return LoginDialog(groupValue:groupValue);
+        return MyDialog(groupValue:groupValue);
       },
     );
   }
