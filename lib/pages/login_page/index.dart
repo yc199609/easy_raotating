@@ -4,26 +4,15 @@ import './login_form.dart';
 import './other_login_methods.dart';
 import './login_type_image.dart';
 import './login_title.dart';
-import './dialog.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key,this.login}) : super(key: key);
-  final login;
+  LoginPage({Key key}) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String groupValue;
   String mode = 'weixin';
-  Future<bool> showConfirmDialog() {
-    return showDialog<bool>(
-      context: context,
-      builder: (context) {
-        return LoginDialog(groupValue:groupValue);
-      },
-    );
-  }
   void _changeMode(){
     mode == 'weixin'?
       setState(() {
@@ -34,9 +23,14 @@ class _LoginPageState extends State<LoginPage> {
         mode='weixin';
       });
   }
+  void login(int n){
+    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => route == null);
+
+    // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => new Home()), ModalRoute.withName('/home'));
+  }
+
   @override
   void initState() {
-    groupValue = 'lk';
     super.initState();
   }
 
@@ -74,9 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                             return ScaleTransition(child: child,scale: anim);
                           },
                           duration: Duration(milliseconds: 300),
-                          child: LoginForm(mode:mode,login:showConfirmDialog,key: ValueKey(mode),),
+                          child: LoginForm(mode:mode,login:login,key: ValueKey(mode),),
                         ),  // 登录的表单
-                        if(mode == 'phone') Container(padding: EdgeInsets.only(top:ScreenUtil().setHeight(50) ),child: Text('请使用旋转无忧系统网页端注册账号登录',style: TextStyle(color: Color.fromRGBO(202,202,203, 1.0)),),)
                       ]
                     ),
                     OtherLoginMethods(changeMode:_changeMode,mode:mode)  // 底部的选择登录方式

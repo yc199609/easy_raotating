@@ -1,30 +1,74 @@
 import 'package:flutter/material.dart';
-import './login_page/index.dart';
+import 'package:flutter/cupertino.dart';
+import './shark_page/index.dart';
+import './user_page/index.dart';
 import './home_page/index.dart';
 
-class IndexPage extends StatefulWidget {
-  IndexPage({Key key}) : super(key: key);
-
+class Layout extends StatefulWidget {
   @override
-  _IndexPageState createState() => _IndexPageState();
+  _LayoutState createState() => _LayoutState();
 }
 
-class _IndexPageState extends State<IndexPage> {
-  bool isLogin = false;
-  void login(){
-    setState(() {
-      isLogin = true;
-    });
-  }
+class _LayoutState extends State<Layout> {
+  PageController _pageController;
+
+  final List<BottomNavigationBarItem> bottomTabs = [
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.home),
+      title:Text('状态监控')
+    ),
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.search),
+      title:Text('震动监控')
+    ),
+    BottomNavigationBarItem(
+      icon:Icon(CupertinoIcons.profile_circled),
+      title:Text('会员中心')
+    ),
+  ];
+
+  final List<Widget> tabBodies = [
+    HomePage(),
+    SharkPage(),
+    UserPage(),
+  ];
+
+  int currentIndex= 0;
+  var currentPage;
+
   @override
-  void initState() {
+  void initState() { 
+    currentPage = tabBodies[currentIndex];
+    _pageController = new PageController()
+      ..addListener(() {
+        if (currentPage != _pageController.page.round()) {
+          setState(() {
+            currentPage = _pageController.page.round();
+          });
+        }
+      });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: isLogin?HomePage():LoginPage(login:login),
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+      bottomNavigationBar: BottomNavigationBar(
+        type:BottomNavigationBarType.fixed,
+        currentIndex: currentIndex,
+        items:bottomTabs,
+        onTap: (index){
+          setState(() {
+            currentIndex = index;
+            currentPage = tabBodies[currentIndex]; 
+          });
+        },
+      ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: tabBodies
+      )
     );
   }
 }

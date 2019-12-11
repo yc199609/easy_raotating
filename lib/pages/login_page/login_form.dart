@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import './dialog.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key key,this.mode,this.login}) : super(key: key);
@@ -12,21 +13,38 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   TextEditingController _unameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  int groupValue;
+
+  Future showConfirmDialog() {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return LoginDialog(groupValue:groupValue);
+      },
+    );
+  }
+
   @override
   void initState() {
+    groupValue = 2;
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Card(
-        elevation: 15.0, //设置阴影
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(7.0))),  //设置圆角
-        child: Container(
-          width: ScreenUtil().setWidth(620),
-          child: widget.mode == 'weixin' ? _weixin(context) : _phone(context)
-        )
-      ), 
+      child: Column(
+        children: <Widget>[
+          Card(
+            elevation: 15.0, //设置阴影
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(7.0))),  //设置圆角
+            child: Container(
+              width: ScreenUtil().setWidth(620),
+              child: widget.mode == 'weixin' ? _weixin(context) : _phone(context)
+            )
+          ),
+          if(widget.mode == 'phone') Container(padding: EdgeInsets.only(top:ScreenUtil().setHeight(50) ),child: Text('请使用旋转无忧系统网页端注册账号登录',style: TextStyle(color: Color.fromRGBO(202,202,203, 1.0)),),)
+        ],
+      ) 
     );
   }
 
@@ -110,9 +128,11 @@ class _LoginFormState extends State<LoginForm> {
       color: Colors.lightBlue,
       highlightColor: Colors.blue[700],
       child: Text('登录',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(32)),),
-      onPressed: (){
-        print(_unameController.text);
-        widget.login();
+      onPressed: () async {
+        var toHome = await showConfirmDialog();
+        if(toHome is int){
+          widget.login(toHome);
+        }
       },
       shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.0)),
       padding: EdgeInsets.fromLTRB(
