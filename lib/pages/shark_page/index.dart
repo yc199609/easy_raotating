@@ -66,15 +66,15 @@ class SharkPage extends StatelessWidget {
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       body: ListView(
         children: <Widget>[
-          myCard(),
-          myCard(),
-          myCard()
+          myCard(context),
+          myCard(context),
+          myCard(context)
         ],
       ),
     );
   }
 
-  Widget myCard() {
+  Widget myCard(BuildContext context) {
     return Card(
       margin: EdgeInsets.fromLTRB(
         ScreenUtil().setWidth(7), 
@@ -85,12 +85,12 @@ class SharkPage extends StatelessWidget {
       child: Container(
         width: ScreenUtil().setWidth(736),
         height: ScreenUtil().setHeight(323),
-        child: cardContent()
+        child: cardContent(context)
       ) 
     );
   }
 
-  Widget cardContent(){
+  Widget cardContent(BuildContext context){
     List<Widget> tiles = [];
     Widget content;
     tiles.add(
@@ -127,7 +127,7 @@ class SharkPage extends StatelessWidget {
                   width: ScreenUtil().setWidth(item['svgWidth'])
                 ),
               ),
-              myButton(item['name'])
+              myButton(context,item['name'])
             ],
           ),
         )
@@ -141,14 +141,16 @@ class SharkPage extends StatelessWidget {
     // return Text('sdsd');
   }
 
-  Widget myButton(title){
+  Widget myButton(BuildContext context,title){
     return ButtonTheme(
       padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       height: ScreenUtil().setHeight(60),
       minWidth: ScreenUtil().setWidth(180),
       child:RaisedButton(
         child: Text(title,style: TextStyle(fontSize: ScreenUtil().setSp(22)),),
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).pushNamed("/vibration_curves");
+        },
         colorBrightness:Brightness.dark,
         color: Colors.blue,
         highlightColor: Colors.blue[700]

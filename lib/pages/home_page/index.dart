@@ -51,7 +51,7 @@ class EntryItem extends StatelessWidget {
     if (root.children.isEmpty)
       return new ListTile(title: new Text(root.title));
     return new ExpansionTile(
-      backgroundColor:Colors.white,
+      // backgroundColor:Colors.white,
       key: new PageStorageKey<Entry>(root),
       title: new Text(root.title),
       children: root.children.map((item) => _childrenItems(context, item)).toList(),
@@ -59,7 +59,8 @@ class EntryItem extends StatelessWidget {
   }
 
   Widget _childrenItems(BuildContext context,item) {
-    return ListTile(
+    return Card(
+      child: ListTile(
       leading: Container(
         width: ScreenUtil().setWidth(176),
         height: ScreenUtil().setHeight(162),
@@ -76,13 +77,13 @@ class EntryItem extends StatelessWidget {
             Positioned(
               top: 0,
               child: Container(
-                width: ScreenUtil().setWidth(66),
-                height: ScreenUtil().setHeight(66),
+                width: ScreenUtil().setWidth(44),
+                height: ScreenUtil().setWidth(44),
                 decoration: BoxDecoration(
                   color: Colors.green,
-                  borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(66)) )
+                  borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(40)) )
                 ),
-                child: Text('在线',style: TextStyle(color: Colors.white),),
+                child: Text('在线',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(18)),),
               ),
             )
           ],
@@ -100,6 +101,7 @@ class EntryItem extends StatelessWidget {
           )
         );
       },
+    ),
     );
   }
 
