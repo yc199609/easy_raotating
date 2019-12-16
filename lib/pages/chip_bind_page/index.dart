@@ -7,6 +7,7 @@ class ChipBindPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
       child: Scaffold(
         appBar: AppBar(
@@ -40,7 +41,9 @@ class ChipBindPage extends StatelessWidget {
                       title: Text('南方泵业宿舍1号水泵'),
                       subtitle: Text('AATJ00018000810000000087'),
                       trailing: Icon(Icons.keyboard_arrow_right),
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.of(context).pushNamed("/chip_bind_detail_page");
+                      },
                     ),
                   ),
                 itemCount: 5,
