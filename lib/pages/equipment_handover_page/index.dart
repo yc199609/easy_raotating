@@ -64,8 +64,8 @@ class EquipmentHandoverPage extends StatelessWidget {
                           mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment:CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text('这是第$index项',style: TextStyle(fontSize: ScreenUtil().setSp(32),color: Colors.grey),),
-                            Text('这是sub',style: TextStyle(fontSize: ScreenUtil().setSp(28),color: Colors.grey))
+                            Text('听诊器$index',style: TextStyle(fontSize: ScreenUtil().setSp(32),color: Colors.grey),),
+                            Text('42314234312423$index',style: TextStyle(fontSize: ScreenUtil().setSp(28),color: Colors.grey))
                           ],
                         ),
                       ],

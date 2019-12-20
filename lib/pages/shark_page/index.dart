@@ -80,7 +80,7 @@ class SharkPage extends StatelessWidget {
         ScreenUtil().setWidth(7), 
         ScreenUtil().setHeight(18), 
         ScreenUtil().setWidth(7), 
-        ScreenUtil().setHeight(18)
+        ScreenUtil().setHeight(8)
       ),
       child: Container(
         width: ScreenUtil().setWidth(736),

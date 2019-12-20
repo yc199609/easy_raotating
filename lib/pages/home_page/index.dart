@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './status_page.dart';
+import '../../components/myExpansionTile.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int activeInt;
+  bool isActive(int n){
+    return n == activeInt;
+  }
+
+  @override
+  void initState() {
+    activeInt = -1;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,102 +26,169 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('设备状态监控')),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-      body: new ListView.builder(
-        itemBuilder: (BuildContext context, int index) => new EntryItem(data[index]),
-        itemCount: data.length,
+      body: ListView(
+        children: <Widget>[
+          MyExpansionTile(
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 0 ? -1 : 0;
+              });
+            },
+            isExpanded: isActive(0),
+            title:Text('列表0'),
+            children: List.generate(5, (i)=>(
+              ListTile(
+                leading: Container(
+                  width: ScreenUtil().setWidth(176),
+                  height: ScreenUtil().setHeight(162),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        child: Image.network(
+                          'https://cdn.gosafenet.com/static/weixin/static/device.png',
+                          width: ScreenUtil().setWidth(169),
+                          height: ScreenUtil().setHeight(95),
+                        ),
+                        bottom: 0,
+                      ),
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: ScreenUtil().setWidth(44),
+                          height: ScreenUtil().setWidth(44),
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(40)) )
+                          ),
+                          child: Text('在线',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(18)),),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                title: Text('设备名称$i') ,
+                subtitle: Text('$i中的内容'),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: (){
+                  Navigator.push( context,
+                    MaterialPageRoute(
+                      builder: (context){
+                        return StatusPage();
+                      }
+                    )
+                  );
+                },
+              )
+            )),
+          ),
+          MyExpansionTile(
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 1 ? -1 : 1;
+              });
+            },
+            isExpanded: isActive(1),
+            title:Text('列表1'),
+            children: List.generate(5, (i)=>(
+              ListTile(
+                leading: Container(
+                  width: ScreenUtil().setWidth(176),
+                  height: ScreenUtil().setHeight(162),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        child: Image.network(
+                          'https://cdn.gosafenet.com/static/weixin/static/device.png',
+                          width: ScreenUtil().setWidth(169),
+                          height: ScreenUtil().setHeight(95),
+                        ),
+                        bottom: 0,
+                      ),
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: ScreenUtil().setWidth(44),
+                          height: ScreenUtil().setWidth(44),
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(40)) )
+                          ),
+                          child: Text('在线',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(18)),),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                title: Text('设备名称$i') ,
+                subtitle: Text('$i中的内容'),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: (){
+                  Navigator.push( context,
+                    MaterialPageRoute(
+                      builder: (context){
+                        return StatusPage();
+                      }
+                    )
+                  );
+                },
+              )
+            )),
+          ),
+          MyExpansionTile(
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 2 ? -1 : 2;
+              });
+            },
+            isExpanded: isActive(2),
+            title:Text('列表2'),
+            children: List.generate(5, (i)=>(
+              ListTile(
+                leading: Container(
+                  width: ScreenUtil().setWidth(176),
+                  height: ScreenUtil().setHeight(162),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        child: Image.network(
+                          'https://cdn.gosafenet.com/static/weixin/static/device.png',
+                          width: ScreenUtil().setWidth(169),
+                          height: ScreenUtil().setHeight(95),
+                        ),
+                        bottom: 0,
+                      ),
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: ScreenUtil().setWidth(44),
+                          height: ScreenUtil().setWidth(44),
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(40)) )
+                          ),
+                          child: Text('在线',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(18)),),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                title: Text('设备名称$i') ,
+                subtitle: Text('$i中的内容'),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: (){
+                  Navigator.push( context,
+                    MaterialPageRoute(
+                      builder: (context){
+                        return StatusPage();
+                      }
+                    )
+                  );
+                },
+              )
+            )),
+          ),
+        ],
       )
     );
-  }
-}
-
-class Entry {
-  Entry(this.title, [this.children = const <Entry>[]]);
-  final String title;
-  final List<Entry> children;
-}
-
-final List<Entry> data = <Entry>[
-  new Entry('Chapter A',
-    <Entry>[
-      new Entry('Section A0'),
-      new Entry('Section A1'),
-      new Entry('Section A2'),
-    ],
-  ),
-  new Entry('Chapter B',
-    <Entry>[
-      new Entry('Section B0'),
-      new Entry('Section B1'),
-    ],
-  ),
-  new Entry('Chapter C',
-  ),
-];
-
-class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
-  final Entry entry;
-
-  Widget _buildTiles(BuildContext context,Entry root) {
-    if (root.children.isEmpty)
-      return new ListTile(title: new Text(root.title));
-    return new ExpansionTile(
-      // backgroundColor:Colors.white,
-      key: new PageStorageKey<Entry>(root),
-      title: new Text(root.title),
-      children: root.children.map((item) => _childrenItems(context, item)).toList(),
-    );
-  }
-
-  Widget _childrenItems(BuildContext context,item) {
-    return Card(
-      child: ListTile(
-      leading: Container(
-        width: ScreenUtil().setWidth(176),
-        height: ScreenUtil().setHeight(162),
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              child: Image.network(
-                'https://cdn.gosafenet.com/static/weixin/static/device.png',
-                width: ScreenUtil().setWidth(169),
-                height: ScreenUtil().setHeight(95),
-              ),
-              bottom: 0,
-            ),
-            Positioned(
-              top: 0,
-              child: Container(
-                width: ScreenUtil().setWidth(44),
-                height: ScreenUtil().setWidth(44),
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.only(bottomRight:Radius.circular(ScreenUtil().setWidth(40)) )
-                ),
-                child: Text('在线',style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(18)),),
-              ),
-            )
-          ],
-        ),
-      ),
-      title: Text(item.title) ,
-      subtitle: Text('A strong animal'),
-      trailing: Icon(Icons.keyboard_arrow_right),
-      onTap: (){
-        Navigator.push( context,
-          MaterialPageRoute(
-            builder: (context){
-              return StatusPage();
-            }
-          )
-        );
-      },
-    ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _buildTiles(context,entry);
   }
 }
