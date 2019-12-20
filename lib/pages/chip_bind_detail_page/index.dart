@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import './myExpansionTile.dart';
 
 class ChipBindDetailPage extends StatefulWidget {
   ChipBindDetailPage({Key key}) : super(key: key);
@@ -26,100 +27,93 @@ class _ChipBindDetailPageState extends State<ChipBindDetailPage> {
     return Scaffold(
       appBar: AppBar(title: Text('设备信息'),),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-      body: SingleChildScrollView(
-        child: ExpansionPanelList(
-          expansionCallback: (index,torf){
-            setState(() {
-              if(torf){
-                activeInt = -1;
-              }else{
-                activeInt = index;
-              }
-            });
-          },
-          children: [
-            ExpansionPanel(
-              isExpanded: isActive(0),
-              headerBuilder: (context,isExpanded){
-                return ListTile(
-                  title:Text('好友')
-                );
-              },
-              body: Column(
-                children: <Widget>[
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                  ListTile(title: Text('我的好友1')),
-                ],
-              )
+      body: ListView(
+        children: [
+          InkWell(
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 0 ? -1 : 0;
+              });
+            },
+            child: MyExpansionTile(
+              // isExpanded: isActive(0),
+              title:Text('好友'),
+              children: <Widget>[
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+                ListTile(title: Text('我的好友1')),
+              ],
             ),
-            ExpansionPanel(
-              isExpanded: isActive(1),
-              headerBuilder: (context,isExpanded){
-                return ListTile(
-                  title:Text('家人')
-                );
-              },
-              body: Column(
-                children: <Widget>[
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                  ListTile(title: Text('我的家人1')),
-                ],
-              )
+          ),
+          InkWell(
+            child: MyExpansionTile(
+              // isExpanded: isActive(1),
+              title:Text('家人'),
+              children: <Widget>[
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+                ListTile(title: Text('我的家人1')),
+              ],
             ),
-            ExpansionPanel(
-              isExpanded: isActive(2),
-              headerBuilder: (context,isExpanded){
-                return ListTile(
-                  title:Text('朋友')
-                );
-              },
-              body: Column(
-                children: <Widget>[
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                  ListTile(title: Text('我的朋友1')),
-                ],
-              )
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 0 ? -1 : 1;
+              });
+            },
+          ),
+          InkWell(
+            child: MyExpansionTile(
+              // isExpanded: isActive(2),
+              title:Text('朋友'),
+              children: <Widget>[
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+                ListTile(title: Text('我的朋友1')),
+              ],
             ),
-          ],
-        ),
-      )
+            onTap: (){
+              setState(() {
+                activeInt = activeInt == 0 ? -1 : 2;
+              });
+            },
+          )
+        ],
+      ),
     );
   }
 }
+
 
