@@ -4,7 +4,7 @@ import './pages/login_page/index.dart';
 import './pages/equipment_handover_page/index.dart';
 import './pages/chip_bind_page/index.dart';
 import './pages/vibration_curves_page/index.dart';
-// import './pages/chip_bind_detail_page/index.dart';
+import './pages/equipment_error_page/index.dart';
 
 
 final Map<String, WidgetBuilder> routeTable = {
@@ -13,7 +13,7 @@ final Map<String, WidgetBuilder> routeTable = {
   '/equipment_handover':(content) => EquipmentHandoverPage(),
   '/chip_bind':(content) => ChipBindPage(),
   '/vibration_curves':(content) => VibrationCurvesPage(),
-  // '/chip_bind_detail_page':(content) => ChipBindDetailPage()
+  '/equipment_error':(content) => EquipmentErrorPage()
 };
 
 // 动态生成路由

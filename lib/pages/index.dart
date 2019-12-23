@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import './shark_page/index.dart';
 import './user_page/index.dart';
 import './home_page/index.dart';
+import '../components/myIcons.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -18,11 +18,11 @@ class _LayoutState extends State<Layout> {
       title:Text('状态监控')
     ),
     BottomNavigationBarItem(
-      icon:Icon(CupertinoIcons.search),
+      icon:Icon(MyIcons.vibration),
       title:Text('震动监控')
     ),
     BottomNavigationBarItem(
-      icon:Icon(CupertinoIcons.profile_circled),
+      icon:Icon(MyIcons.user),
       title:Text('会员中心')
     ),
   ];

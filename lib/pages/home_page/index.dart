@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import './status_page.dart';
+import './status/index.dart';
 import '../../components/myExpansionTile.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +24,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Scaffold(
-      appBar: AppBar(title: Text('设备状态监控')),
+      appBar: AppBar(
+        title: Text('设备状态监控'),
+      ),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       body: ListView(
         children: <Widget>[

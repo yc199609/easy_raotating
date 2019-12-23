@@ -71,12 +71,12 @@ class CustomMeasureTickCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new charts.TimeSeriesChart(seriesList,
-        animate: animate,
-
-        /// Customize the measure axis to have 2 ticks,
-        primaryMeasureAxis: new charts.NumericAxisSpec(
-            tickProviderSpec:
-                new charts.BasicNumericTickProviderSpec(desiredTickCount: 6)));
+      animate: animate,
+      primaryMeasureAxis: new charts.NumericAxisSpec(
+        tickProviderSpec:
+          new charts.BasicNumericTickProviderSpec(desiredTickCount: 6)
+      )
+    );
   }
 
   /// Create one series with sample hard coded data.
