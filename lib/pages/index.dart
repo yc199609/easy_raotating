@@ -10,7 +10,6 @@ class Layout extends StatefulWidget {
 }
 
 class _LayoutState extends State<Layout> {
-  PageController _pageController;
 
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
@@ -34,40 +33,24 @@ class _LayoutState extends State<Layout> {
   ];
 
   int currentIndex= 0;
-  var currentPage;
-
-  @override
-  void initState() { 
-    currentPage = tabBodies[currentIndex];
-    _pageController = new PageController()
-      ..addListener(() {
-        if (currentPage != _pageController.page.round()) {
-          setState(() {
-            currentPage = _pageController.page.round();
-          });
-        }
-      });
-    super.initState();
-  }
+  PageController pageController = PageController(initialPage: 0,keepPage: true);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
-        type:BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         items:bottomTabs,
-        onTap: (index){
-          setState(() {
-            currentIndex = index;
-            currentPage = tabBodies[currentIndex]; 
-          });
-        },
+        onTap: (index)=> pageController.animateToPage(index,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut
+        ),
       ),
-      body: IndexedStack(
-        index: currentIndex,
-        children: tabBodies
+      body: PageView(
+        onPageChanged: (i) => setState(()=> currentIndex = i),
+        controller: pageController,
+        children: tabBodies,
       )
     );
   }

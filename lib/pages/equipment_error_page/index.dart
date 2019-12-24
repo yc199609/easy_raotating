@@ -51,41 +51,44 @@ Widget header(BuildContext context){
 
 Widget myListTile(BuildContext context){
   ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
-  return InkWell(
-    onTap: (){
-      Navigator.push( context,
-        MaterialPageRoute(
-          builder: (context){
-            return EquipmentErrorDetail();
-          }
-        )
-      );
-    },
-    child: Container(
-      padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(10), ScreenUtil().setHeight(18), ScreenUtil().setWidth(10), ScreenUtil().setHeight(18)),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor))
+  return Card(
+    child: InkWell(
+      onTap: (){
+        Navigator.push( context,
+          MaterialPageRoute(
+            builder: (context){
+              return EquipmentErrorDetail();
+            }
+          )
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(10), ScreenUtil().setHeight(18), ScreenUtil().setWidth(10), ScreenUtil().setHeight(18)),
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor))
+        ),
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('故障时间:',
+                  style: TextStyle(fontSize: ScreenUtil().setSp(30)),
+                ),
+                Text('故障类型:',
+                  style: TextStyle(fontSize: ScreenUtil().setSp(30)),
+                ),
+                Text('故障类型:',
+                  style: TextStyle(fontSize: ScreenUtil().setSp(30)),
+                ),
+              ],
+            ),
+            Icon(Icons.keyboard_arrow_right),
+          ],
+        ),
       ),
-      child:Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('故障时间:',
-                style: TextStyle(fontSize: ScreenUtil().setSp(30)),
-              ),
-              Text('故障类型:',
-                style: TextStyle(fontSize: ScreenUtil().setSp(30)),
-              ),
-              Text('故障类型:',
-                style: TextStyle(fontSize: ScreenUtil().setSp(30)),
-              ),
-            ],
-          ),
-          Icon(Icons.keyboard_arrow_right),
-        ],
-      ),
-    ),
+    )
   );
+  
 }
