@@ -8,6 +8,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.0"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -62,6 +69,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_picker:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "6d89437eb49981e4b4e06a10dad6a8b66364b34f"
+      url: "git://github.com/yangyxd/flutter_picker.git"
+    source: git
+    version: "1.1.2"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -212,6 +228,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.5"
+  timeline_list:
+    dependency: "direct main"
+    description:
+      name: timeline_list
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.5"
+  transparent_image:
+    dependency: "direct main"
+    description:
+      name: transparent_image
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.0"
   typed_data:
     dependency: transitive
     description:

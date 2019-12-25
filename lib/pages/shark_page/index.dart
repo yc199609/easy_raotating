@@ -2,6 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../components/search_bar.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class SharkPage extends StatelessWidget {
   final buttonList = <Map>[
@@ -97,8 +98,9 @@ class SharkPage extends StatelessWidget {
       Positioned(
         top: ScreenUtil().setHeight(63),
         left: ScreenUtil().setWidth(276),
-        child:Image.network(
-          'https://cdn.gosafenet.com/static/weixin/static/资源1.png',
+        child: FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: 'https://cdn.gosafenet.com/static/weixin/static/资源1.png',
           width:ScreenUtil().setWidth(188),
           fit: BoxFit.fitWidth,
         ),

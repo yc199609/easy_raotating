@@ -12,8 +12,8 @@ class LoginTypeImage extends StatelessWidget {
       child: Stack(
         alignment:AlignmentDirectional.center,
         children: <Widget>[
-          Image.network(
-            'https://cdn.gosafenet.com/static/weixin/static/login/login-circle.png',
+          Image.asset(
+            'assets/images/login_circle.png',
             width: ScreenUtil().setWidth(139),
             height: ScreenUtil().setHeight(173),
           ),
@@ -24,10 +24,10 @@ class LoginTypeImage extends StatelessWidget {
                 return ScaleTransition(child: child,scale: anim);
               },
               duration: Duration(milliseconds: 300),
-              child: Image.network(
+              child: Image.asset(
                 mode == 'weixin'?
-                "https://cdn.gosafenet.com/static/weixin/static/login/login-weixin.png":
-                "https://cdn.gosafenet.com/static/weixin/static/login/login-person.png",
+                'assets/images/login_weixin.png':
+                'assets/images/login_person.png',
                 width: ScreenUtil().setWidth(72),
                 height: ScreenUtil().setHeight(56),
                 key: ValueKey(mode),

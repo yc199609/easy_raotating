@@ -25,8 +25,6 @@ class _LoginPageState extends State<LoginPage> {
   }
   void login(int n){
     Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => route == null);
-
-    // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => new Home()), ModalRoute.withName('/home'));
   }
 
   @override
@@ -44,9 +42,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              child: 
-              Image.network(
-                'https://cdn.gosafenet.com/static/weixin/static/login/login.png',
+              child: Image.asset(
+                'assets/images/login_bg.png',
                 width: ScreenUtil().setWidth(750),
                 fit: BoxFit.fitWidth,
                 height: ScreenUtil().setHeight(446),

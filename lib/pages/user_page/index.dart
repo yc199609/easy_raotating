@@ -102,8 +102,8 @@ class _UserPageState extends State<UserPage> {
   Widget userBar(){
     return Stack(
       children: <Widget>[
-        Image.network(
-          'https://cdn.gosafenet.com/static/weixin/static/login/login.png',
+        Image.asset(
+          'assets/images/login_bg.png',
           width: ScreenUtil().setWidth(750),
           height: ScreenUtil().setHeight(444),
           fit: BoxFit.fitWidth,
@@ -111,9 +111,14 @@ class _UserPageState extends State<UserPage> {
         Positioned(
           top: ScreenUtil().setHeight(112),
           left: ScreenUtil().setWidth(305.5),
-          child: CircleAvatar(
-            radius: ScreenUtil().setWidth(70),
-            backgroundImage: AssetImage('assets/images/avatar.jpeg'),
+          child: ClipOval(
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/avatar_placeholder.jpg',
+              image: 'https://yc199609.github.io/images/avatar.jpeg',
+              width: ScreenUtil().setWidth(140),
+              height: ScreenUtil().setHeight(140),
+              fit: BoxFit.fitWidth,
+            ),
           )
         ),
         Positioned(

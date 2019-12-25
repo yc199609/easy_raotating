@@ -53,7 +53,7 @@ class EquipmentHandoverPage extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Container(
-                          child: Image.network('https://cdn.gosafenet.com/static/weixin/static/device.png',
+                          child: Image.asset('assets/images/device.png',
                             height: ScreenUtil().setHeight(146),
                             width: ScreenUtil().setWidth(146),
                             fit: BoxFit.fitHeight,

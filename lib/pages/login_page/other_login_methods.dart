@@ -42,10 +42,10 @@ class OtherLoginMethods extends StatelessWidget {
                   return ScaleTransition(child: child,scale: anim);
                 },
                 duration: Duration(milliseconds: 300),
-                child: Image.network(
+                child: Image.asset(
                   mode == 'weixin'?
-                  "https://cdn.gosafenet.com/static/weixin/static/login/login-person.png":
-                  "https://cdn.gosafenet.com/static/weixin/static/login/login-weixin.png",
+                  'assets/images/login_person.png':
+                  'assets/images/login_weixin.png',
                   width: ScreenUtil().setWidth(54),
                 height: ScreenUtil().setHeight(54),
                   key: ValueKey(mode),

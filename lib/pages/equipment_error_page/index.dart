@@ -26,9 +26,12 @@ Widget header(BuildContext context){
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Image.network('https://cdn.gosafenet.com/static/weixin/static/warn.png',
-            width: ScreenUtil().setWidth(188),
+          FadeInImage.assetNetwork(
+            placeholder: 'assets/images/warn_placeholder.png',
+            image: 'https://cdn.gosafenet.com/static/weixin/static/warn.png',
+            width:ScreenUtil().setWidth(188),
             height: ScreenUtil().setHeight(188),
+            fit: BoxFit.fitWidth,
           ),
           Text('安波宁德五号车间空压机',
             style: TextStyle(

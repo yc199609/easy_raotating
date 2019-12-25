@@ -10,18 +10,27 @@ class Current extends StatelessWidget {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
       height: ScreenUtil().setHeight(80),
+      padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(10),ScreenUtil().setHeight(80),0,0),
       child: Column(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text('A相:43.0'),
-              Text('B相:30.0'),
-              Text('C相:31.0')
+              Text('A相: 43.0',
+                style: TextStyle(fontSize: ScreenUtil().setSp(36)),
+              ),
+              Text('B相: 30.0',
+                style: TextStyle(fontSize: ScreenUtil().setSp(36)),
+              ),
+              Text('C相: 31.0',
+                style: TextStyle(fontSize: ScreenUtil().setSp(36)),
+              )
             ],
           ),
           Container(
-            height: 400,
+            padding: EdgeInsets.only(top: ScreenUtil().setHeight(40)),
+            width: ScreenUtil().setWidth(750),
+            height: ScreenUtil().setHeight(600),
             child: CustomMeasureTickCount.withRandomData(),
           )
         ],

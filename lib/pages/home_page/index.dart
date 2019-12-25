@@ -99,8 +99,8 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        child: Image.network(
-                          'https://cdn.gosafenet.com/static/weixin/static/device.png',
+                        child: Image.asset(
+                          'assets/images/device.png',
                           width: ScreenUtil().setWidth(169),
                           height: ScreenUtil().setHeight(95),
                         ),

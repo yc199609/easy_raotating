@@ -6,6 +6,7 @@ import './voltage.dart';
 import './temperature.dart';
 import './warn.dart';
 import './pressure.dart';
+import 'package:badges/badges.dart';
 
 class StatusPage extends StatefulWidget {
   @override
@@ -41,13 +42,28 @@ class _StatusPageState extends State<StatusPage> with SingleTickerProviderStateM
         children: <Widget>[
           Card(
             child:Container(
+              padding: EdgeInsets.all(2),
               width: ScreenUtil().setWidth(750),
+              height: ScreenUtil().setHeight(180),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('运行状态:运行'),
-                  Text('功率因数:0.84'),
-                  Text('运行时长:70000'),
-                  Text('更新时间:08/07/17:26')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text('运行状态:运行',style: TextStyle(fontSize: ScreenUtil().setSp(30)),),
+                      Text('更新时间:08/07 17:26',style: TextStyle(fontSize: ScreenUtil().setSp(30)))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text('功率因数:0.84',style: TextStyle(fontSize: ScreenUtil().setSp(30))),
+                      Text('运行时长:70000',style: TextStyle(fontSize: ScreenUtil().setSp(30))),
+                      Text('消耗电量:33333.3',style: TextStyle(fontSize: ScreenUtil().setSp(30)))
+                    ],
+                  )
+                  
                 ],
               )
             )
@@ -56,16 +72,19 @@ class _StatusPageState extends State<StatusPage> with SingleTickerProviderStateM
             child: Column(
               children: <Widget>[
                 Material(
-                  color: Colors.indigo,
                   child: TabBar(
                     indicatorColor:Colors.lightBlue,
                     controller: _tabController,
                     tabs: <Widget>[
-                      Tab(icon: Icon(MyIcons.current),),
-                      Tab(icon: Icon(MyIcons.voltage),),
-                      Tab(icon: Icon(MyIcons.temperature),),
-                      Tab(icon: Icon(MyIcons.pressure),),
-                      Tab(icon: Icon(MyIcons.warn),)
+                      Tab(icon: Icon(MyIcons.current,color: Colors.grey,),),
+                      Tab(icon: Icon(MyIcons.voltage,color: Colors.grey),),
+                      Tab(icon: Icon(MyIcons.temperature,color: Colors.grey),),
+                      Tab(icon: Icon(MyIcons.pressure,color: Colors.grey),),
+                      Badge(
+                        position: BadgePosition.topRight(top: -0, right: -15),
+                        badgeContent: Text('3',style: TextStyle(color: Colors.white),),
+                        child: Tab(icon: Icon(MyIcons.warn,color: Colors.grey),),
+                      )
                     ],
                   ),
                 ),

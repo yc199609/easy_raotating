@@ -62,7 +62,6 @@ class _LoginFormState extends State<LoginForm> {
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromRGBO(238,238,238, 1))),
-                // focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.lightGreenAccent)), 
                 contentPadding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(30),ScreenUtil().setHeight(34),ScreenUtil().setWidth(32),ScreenUtil().setHeight(30)),
                 hintText: "请输入电话号码",
                 prefixIcon: Icon(Icons.person) 
@@ -102,11 +101,17 @@ class _LoginFormState extends State<LoginForm> {
         children: <Widget>[
           Container(
             margin: EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(80), 0, ScreenUtil().setHeight(10)),
-            child: Image.network(
-              'https://cdn.gosafenet.com/static/weixin/static/device.png',
-              width: ScreenUtil().setWidth(129),
-              height: ScreenUtil().setHeight(129),
-            ),
+            width: ScreenUtil().setWidth(140),
+            height: ScreenUtil().setHeight(140),
+            child: ClipOval(
+              child: FadeInImage.assetNetwork(
+                placeholder: 'assets/images/avatar_placeholder.jpg',
+                image: 'https://yc199609.github.io/images/avatar.jpeg',
+                width: ScreenUtil().setWidth(140),
+                height: ScreenUtil().setHeight(140),
+                fit: BoxFit.fitWidth,
+              ),
+            )
           ),
           Container(
             padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(28)),

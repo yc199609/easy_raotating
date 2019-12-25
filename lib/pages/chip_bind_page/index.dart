@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../components/myExpansionTile.dart';
 import '../../components/search_bar.dart';
+import './detail/index.dart';
 
 class ChipBindPage extends StatefulWidget {
   ChipBindPage({Key key}) : super(key: key);
@@ -32,7 +33,15 @@ class _ChipBindDetailPageState extends State<ChipBindPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push( context,
+                MaterialPageRoute(
+                  builder: (context){
+                    return ChipBindDetail();
+                  }
+                )
+              );
+            },
           )
         ],
       ),
